@@ -14,23 +14,23 @@ public class Mover : MonoBehaviour
     private float _travelTimeToPoint = 0;
     private int _currentPath = 0;
 
-    public event UnityAction DestroyedEnemies;
-    public event UnityAction DestroyedAllEnemies;
-    public event UnityAction<bool> Moved;
+    public event UnityAction MovedNewStage;
+    public event UnityAction LevelComplited;
+    public event UnityAction<bool> MovedForward;
 
     private void Start()
     {
-        SetPatch();
+        SetPath();
     }
 
     public void MoveForward()
     {
         if (_currentPath + 1 < _paths.Length)
         {
-            Moved?.Invoke(true);
+            MovedForward?.Invoke(true);
             transform.DOMove(_lastPoint, 1, false);
             _currentPath++;
-            Invoke(nameof(SetPatch),1);
+            Invoke(nameof(SetPath),1);
         }
     }
 
@@ -38,16 +38,16 @@ public class Mover : MonoBehaviour
     {
         if (_currentPath + 1 < _paths.Length)
         {
-            DestroyedEnemies?.Invoke();
+            MovedNewStage?.Invoke();
         }
         else
         {
             _playerStats.GetReward();
-            DestroyedAllEnemies?.Invoke();
+            LevelComplited?.Invoke();
         }
     }
 
-    private void SetPatch()
+    private void SetPath()
     {
         _path = _paths[_currentPath];
         _points = new Vector3[_path.childCount];
@@ -75,6 +75,6 @@ public class Mover : MonoBehaviour
     private void RotatePlayer()
     {
         transform.DORotateQuaternion(_path.GetChild(_path.childCount - 1).transform.rotation, 1);
-        Moved?.Invoke(false);
+        MovedForward?.Invoke(false);
     }
 }

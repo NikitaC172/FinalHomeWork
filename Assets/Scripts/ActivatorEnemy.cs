@@ -29,7 +29,7 @@ public class ActivatorEnemy : MonoBehaviour
                     enemy.gameObject.SetActive(true);
                     enemy.GetComponent<Enemy>().enabled = true;
                     enemy.GetComponent<WeaponEnemy>().enabled = true;
-                    enemy.Die += CountDead;
+                    enemy.Died += CountDead;
                 }
             }
         }
@@ -51,7 +51,7 @@ public class ActivatorEnemy : MonoBehaviour
         {
             foreach (var enemy in _enemies)
             {
-                enemy.Die -= CountDead;
+                enemy.Died -= CountDead;
                 Destroy(enemy.gameObject, _secondsToRemove);
             }
         }

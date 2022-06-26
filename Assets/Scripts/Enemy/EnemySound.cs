@@ -24,16 +24,16 @@ public class EnemySound : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemy.Die += Die;
-        _enemy.Hited += Hit;
-        _weaponEnemy.ShootWeapon += Shoot;
+        _enemy.Died += Die;
+        _enemy.Damaged += Hit;
+        _weaponEnemy.Shooted += Shoot;
     }
 
     private void OnDisable()
     {
-        _enemy.Die -= Die;
-        _enemy.Hited -= Hit;
-        _weaponEnemy.ShootWeapon -= Shoot;
+        _enemy.Died -= Die;
+        _enemy.Damaged -= Hit;
+        _weaponEnemy.Shooted -= Shoot;
     }
 
     private void Hit(int currentValue, int maxValue)
@@ -43,7 +43,6 @@ public class EnemySound : MonoBehaviour
 
     private void Die()
     {
-        if (_dieSound != null)
             _audioSource.PlayOneShot(_dieSound);
     }
 

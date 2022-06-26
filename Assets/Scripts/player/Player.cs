@@ -16,13 +16,13 @@ public class Player : MonoBehaviour
     [SerializeField] private List<Weapon> _weapons = null;
     [SerializeField] private Mover _mover = null;
 
-    public event UnityAction Dead;
+    public event UnityAction Died;
     public event UnityAction Damaged;
     public event UnityAction ChangedWeapon;
-    public event UnityAction StartReload;
+    public event UnityAction StartedReload;
     public event UnityAction Reloaded;
     public event UnityAction Shooted;
-    public event UnityAction EmptyAmmo;
+    public event UnityAction EmptedAmmo;
 
     private Collider _collider;
     private Rigidbody _rigidbody;
@@ -59,12 +59,12 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        _mover.Moved += SetBlockShoot;
+        _mover.MovedForward += SetBlockShoot;
     }
 
     private void OnDisable()
     {
-        _mover.Moved -= SetBlockShoot;
+        _mover.MovedForward -= SetBlockShoot;
     }
 
     private void Start()
@@ -113,7 +113,6 @@ public class Player : MonoBehaviour
 
     public void TakeCover()
     {
-        Debug.Log(_isCover);
         if (_isCover == false)
         {
             _isCover = true;
@@ -136,7 +135,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator WaitReload()
     {
-        StartReload?.Invoke();
+        StartedReload?.Invoke();
         _currentWeapon.TryReload();
         yield return new WaitWhile(() => _currentWeapon.IsReloading == true);
         Reloaded?.Invoke();
@@ -165,7 +164,7 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    EmptyAmmo?.Invoke();
+                    EmptedAmmo?.Invoke();
                 }
             }
         }
@@ -188,7 +187,7 @@ public class Player : MonoBehaviour
 
     private void ActivateDeadEvent()
     {
-        Dead?.Invoke();
+        Died?.Invoke();
     }
 
     public void ChangeWeapon()

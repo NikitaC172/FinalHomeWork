@@ -14,8 +14,8 @@ public class WeaponEnemy : MonoBehaviour
     private Enemy _enemy = null;
     private Transform _shootPoint = null;
     private bool _isReadyToShoot = false;
-    public event UnityAction ReloadWeapon;
-    public event UnityAction ShootWeapon;
+    public event UnityAction Reloaded;
+    public event UnityAction Shooted;
 
     private void Awake()
     {
@@ -58,7 +58,7 @@ public class WeaponEnemy : MonoBehaviour
             {
                 if (_isReadyToShoot)
                 {
-                    ShootWeapon?.Invoke();
+                    Shooted?.Invoke();
                     Instantiate(Bullet, _shootPoint.transform.position, _shootPoint.transform.rotation);
                 }
                 yield return waitSecondsBetweenShots;                
@@ -66,7 +66,7 @@ public class WeaponEnemy : MonoBehaviour
 
             if (_isReadyToShoot)
             {
-                ReloadWeapon?.Invoke();
+                Reloaded?.Invoke();
             }
 
             yield return waitSecondsBetweenReload;

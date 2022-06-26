@@ -25,41 +25,37 @@ public class AnimatorEnemy : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemy.AimWeapon += GetReadyShoot;
-        _enemy.Die += Die;
-        _enemyWeapon.ReloadWeapon += Reload;
-        _enemyWeapon.ShootWeapon += Shoot;
+        _enemy.WeaponAimed += GetReadyShoot;
+        _enemy.Died += Die;
+        _enemyWeapon.Reloaded += Reload;
+        _enemyWeapon.Shooted += Shoot;
     }
 
     private void Reload()
     {
-        if (_reloadAnimation != "")
             _animator.Play(_reloadAnimation);
     }
 
     private void Shoot()
     {
-        if (_ShootAnimation != "")
             _animator.Play(_ShootAnimation);
     }
 
     private void Die()
     {
-        if (_deadAnimation != "")
             _animator.Play(_deadAnimation);
     }
 
     private void GetReadyShoot()
     {
-        if (_idleAnimation != "")
             _animator.Play(_idleAnimation);
     }
 
     private void OnDisable()
     {
-        _enemy.AimWeapon -= GetReadyShoot;
-        _enemy.Die -= Die;
-        _enemyWeapon.ReloadWeapon -= Reload;
-        _enemyWeapon.ShootWeapon -= Shoot;
+        _enemy.WeaponAimed -= GetReadyShoot;
+        _enemy.Died -= Die;
+        _enemyWeapon.Reloaded -= Reload;
+        _enemyWeapon.Shooted -= Shoot;
     }
 }

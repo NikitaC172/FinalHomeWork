@@ -12,14 +12,14 @@ public class GameOver : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.Dead += OpenFailedGameMenu;
-        _mover.DestroyedAllEnemies += OpenCompliteGameMenu;
+        _player.Died += OpenFailedGameMenu;
+        _mover.LevelComplited += OpenCompliteGameMenu;
     }
 
     private void OnDisable()
     {
-        _player.Dead -= OpenFailedGameMenu;
-        _mover.DestroyedAllEnemies -= OpenCompliteGameMenu;
+        _player.Died -= OpenFailedGameMenu;
+        _mover.LevelComplited -= OpenCompliteGameMenu;
     }
 
     public void OpenPanel(GameObject panel)

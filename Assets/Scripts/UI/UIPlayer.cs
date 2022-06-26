@@ -18,7 +18,7 @@ public class UIPlayer : MonoBehaviour
         _player.Damaged += ChangeHealth;
         _player.ChangedWeapon += ChangeNameWeapon;
         _player.ChangedWeapon += ChangedAmmo;
-        _mover.DestroyedEnemies += ShowMoveButton;
+        _mover.MovedNewStage += ShowMoveButton;
         _player.Reloaded += ChangedAmmo;
         _player.Shooted += ChangedAmmo;
     }
@@ -36,7 +36,7 @@ public class UIPlayer : MonoBehaviour
 
     private void OnDisable()
     {
-        _mover.DestroyedEnemies -= ShowMoveButton;
+        _mover.MovedNewStage -= ShowMoveButton;
         _player.ChangedWeapon -= ChangeNameWeapon;
         _player.Damaged -= ChangeHealth;
         _player.Reloaded -= ChangedAmmo;

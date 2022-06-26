@@ -15,9 +15,9 @@ public class Enemy : MonoBehaviour
     private Enemy _enemy;
     private int _currentHealth = 0;
     private Collider _collider = null;
-    public event UnityAction AimWeapon;
-    public event UnityAction Die;
-    public event UnityAction<int, int> Hited;
+    public event UnityAction WeaponAimed;
+    public event UnityAction Died;
+    public event UnityAction<int, int> Damaged;
     public event UnityAction<bool> ChangedReadyToShoot;
 
     public Transform ShootPoint => _shootPoint;
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     {
         _currentHealth = _health;
         Invoke(nameof(SetReadyShoot), _secondsBeforeFirstShoot);
-        AimWeapon?.Invoke();
+        WeaponAimed?.Invoke();
     }
 
     private void FixedUpdate()
@@ -49,12 +49,12 @@ public class Enemy : MonoBehaviour
     {
         float verificationError = 0.1f;
         _currentHealth -= damage;
-        Hited?.Invoke(_currentHealth, _health);
+        Damaged?.Invoke(_currentHealth, _health);
 
         if (_currentHealth <= verificationError)
         {
             _collider.enabled = false;
-            Die?.Invoke();
+            Died?.Invoke();
             ChangedReadyToShoot?.Invoke(false);
             _enemy.enabled = false;
         }

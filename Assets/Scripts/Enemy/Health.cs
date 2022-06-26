@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemy.Hited += OnValueChanged;
+        _enemy.Damaged += OnValueChanged;
     }
 
     private void OnValueChanged(int value, int maxValue)
@@ -21,6 +21,6 @@ public class Health : MonoBehaviour
 
     private void OnDisable()
     {
-        _enemy.Hited -= OnValueChanged;
+        _enemy.Damaged -= OnValueChanged;
     }
 }
