@@ -13,7 +13,7 @@ public class WeaponEnemy : MonoBehaviour
 
     private Enemy _enemy = null;
     private Transform _shootPoint = null;
-    private bool _isShoot = false;
+    private bool _isReadyToShoot = false;
     public event UnityAction ReloadWeapon;
     public event UnityAction ShootWeapon;
 
@@ -23,35 +23,40 @@ public class WeaponEnemy : MonoBehaviour
         _shootPoint = _enemy.ShootPoint;
     }
 
-    private void FixedUpdate()
+    private void OnEnable()
     {
-        if (_isShoot == false)
+        _enemy.ChangedReadyToShoot += ChangeReadyToShoot;
+    }
+
+    private void OnDisable()
+    {
+        _enemy.ChangedReadyToShoot -= ChangeReadyToShoot;
+    }
+
+    private void ChangeReadyToShoot(bool isReady)
+    {
+        _isReadyToShoot = isReady;
+
+        if (_isReadyToShoot)
         {
-            if (_enemy.IsReadyToShoot)
-            {
-                StartCoroutine(Shoot());
-            }
+            StartCoroutine(Shoot());
         }
-        else if (_isShoot)
+        else
         {
-            if (_enemy.IsReadyToShoot == false)
-            {
-                StopCoroutine(Shoot());
-            }
+            StopCoroutine(Shoot());
         }
     }
 
     private IEnumerator Shoot()
     {
-        _isShoot = true;
         var waitSecondsBetweenShots = new WaitForSeconds(_secondsBetweenShots);
         var waitSecondsBetweenReload = new WaitForSeconds(_secondsReload);
 
-        while (_enemy.IsReadyToShoot)
+        while (_isReadyToShoot)
         {
             for (int i = 0; i < _numberOfShots; i++)
             {
-                if (_enemy.IsReadyToShoot)
+                if (_isReadyToShoot)
                 {
                     ShootWeapon?.Invoke();
                     Instantiate(Bullet, _shootPoint.transform.position, _shootPoint.transform.rotation);
@@ -59,14 +64,12 @@ public class WeaponEnemy : MonoBehaviour
                 yield return waitSecondsBetweenShots;                
             }
 
-            if (_enemy.IsReadyToShoot)
+            if (_isReadyToShoot)
             {
                 ReloadWeapon?.Invoke();
             }
 
             yield return waitSecondsBetweenReload;
         }
-
-        _isShoot = false;
     }
 }

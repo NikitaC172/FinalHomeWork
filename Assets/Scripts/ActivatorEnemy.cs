@@ -9,6 +9,7 @@ public class ActivatorEnemy : MonoBehaviour
 {
     [SerializeField] private List<Enemy> _enemies = null;
     [SerializeField] private Transform pointCover = null;
+
     private Mover _mover;
     private int _secondsToRemove = 10;
     private int _countDeadEnemy = 0;

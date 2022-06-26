@@ -11,6 +11,7 @@ public class AnimatorEnemy : MonoBehaviour
     [SerializeField] private string _idleAnimation = "Idle_Shoot";
     [SerializeField] private string _ShootAnimation = "Shoot";
     [SerializeField] private string _deadAnimation = "Die";
+
     private Enemy _enemy = null;
     private WeaponEnemy _enemyWeapon = null;
     private Animator _animator = null;

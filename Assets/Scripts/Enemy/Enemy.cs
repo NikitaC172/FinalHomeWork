@@ -9,53 +9,54 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
     [SerializeField] private float _secondsBeforeFirstShoot = 5f;
-    [SerializeField] private Transform _shootPoint;    
+    [SerializeField] private Transform _shootPoint;
     [SerializeField] private Transform _player = null;
 
+    private Enemy _enemy;
     private int _currentHealth = 0;
-    private bool _isReadyToShoot = false;
     private Collider _collider = null;
     public event UnityAction AimWeapon;
     public event UnityAction Die;
     public event UnityAction<int, int> Hited;
+    public event UnityAction<bool> ChangedReadyToShoot;
 
     public Transform ShootPoint => _shootPoint;
-    public bool IsReadyToShoot => _isReadyToShoot;
 
     private void Awake()
     {
-        _collider = GetComponent<Collider>();        
+        _enemy = GetComponent<Enemy>();
+        _collider = GetComponent<Collider>();
     }
 
     private void OnEnable()
     {
-        GetComponent<HealthCircle>().enabled = true;
+        GetComponent<Health>().enabled = true;
     }
 
     private void Start()
     {
         _currentHealth = _health;
+        Invoke(nameof(SetReadyShoot), _secondsBeforeFirstShoot);
         AimWeapon?.Invoke();
     }
 
     private void FixedUpdate()
     {
-        if (_currentHealth > 0.1f)
-        {
-            AimAtTheTarget();
-        }
+        AimAtTheTarget();
     }
 
     public void TakeDamage(int damage)
     {
+        float verificationError = 0.1f;
         _currentHealth -= damage;
         Hited?.Invoke(_currentHealth, _health);
 
-        if (_currentHealth <= 0.1f)
+        if (_currentHealth <= verificationError)
         {
             _collider.enabled = false;
-            _isReadyToShoot = false;
             Die?.Invoke();
+            ChangedReadyToShoot?.Invoke(false);
+            _enemy.enabled = false;
         }
     }
 
@@ -66,18 +67,15 @@ public class Enemy : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(heading);
         transform.DORotateQuaternion(rotation, secondsForRotateToAim);
         _shootPoint.LookAt(_player);
-
-        if (_isReadyToShoot == false)
-        {
-            Invoke(nameof(SetReadyShoot), _secondsBeforeFirstShoot);
-        }
     }
 
     private void SetReadyShoot()
     {
-        if (_currentHealth > 0.1f)
+        float verificationError = 0.1f;
+
+        if (_currentHealth > verificationError)
         {
-            _isReadyToShoot = true;
+            ChangedReadyToShoot?.Invoke(true);
         }
     }
 }

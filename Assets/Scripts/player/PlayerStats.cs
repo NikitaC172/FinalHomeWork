@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int _money = 0;
     [SerializeField] private List<string> _nameWeapons;
     [SerializeField] private int _reward;
+
     private string _nameSaveFile = "/PlayerStats.dat";
 
     public int Money => _money;
