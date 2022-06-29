@@ -820,7 +820,6 @@ MonoBehaviour:
   _enemies:
   - {fileID: 1680727626}
   - {fileID: 1907433171}
-  pointCover: {fileID: 1683173732}
 --- !u!65 &453837923
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2071,6 +2070,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1016965725 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+  m_PrefabInstance: {fileID: 1300180582}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2336f2f64669e83488a3482c5174fa50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1016965726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3673838332151001425, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+  m_PrefabInstance: {fileID: 1300180582}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3541219b6a6eedc4f9ac12c14f6ed2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1022234526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,7 +2395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemies: []
-  pointCover: {fileID: 425704109}
 --- !u!65 &1110695359
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2603,6 +2623,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: dc56e547143387b4e91644563814d4ef, type: 3}
+    - target: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: dc56e547143387b4e91644563814d4ef, type: 3}
+    - target: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _firstWeapon
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: 8759500fbac831d449b4e29421d220e2, type: 3}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: dc56e547143387b4e91644563814d4ef, type: 3}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: 8759500fbac831d449b4e29421d220e2, type: 3}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: ad67d56aff5458643b42657ea1833547, type: 3}
     - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
       propertyPath: _nameWeapons.Array.size
       value: 0
@@ -3429,10 +3489,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1880484617}
+    - target: {fileID: 4606013170599027654, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.625122
+      objectReference: {fileID: 0}
     - target: {fileID: 4606013170599027655, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1592812578}
+      objectReference: {fileID: 1592812575}
+    - target: {fileID: 4606013170599027655, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Mover, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4606013170642180134, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3440,7 +3508,11 @@ PrefabInstance:
     - target: {fileID: 4606013170722153562, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1592812578}
+      objectReference: {fileID: 1016965725}
+    - target: {fileID: 4606013170722153562, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChangerWeapon, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4606013170755320937, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3448,7 +3520,11 @@ PrefabInstance:
     - target: {fileID: 4606013170980954854, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1592812578}
+      objectReference: {fileID: 1016965726}
+    - target: {fileID: 4606013170980954854, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Shooter, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4606013171126246128, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3549,6 +3625,14 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1592812578}
+    - target: {fileID: 4606013171435930466, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: _shooter
+      value: 
+      objectReference: {fileID: 1016965726}
+    - target: {fileID: 4606013171435930466, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: _changerWeapon
+      value: 
+      objectReference: {fileID: 1016965725}
     - target: {fileID: 4606013171584962721, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -3844,7 +3928,6 @@ MonoBehaviour:
   _enemies:
   - {fileID: 903806991}
   - {fileID: 1570599035}
-  pointCover: {fileID: 60543533}
 --- !u!65 &1997985454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4047,7 +4130,6 @@ MonoBehaviour:
   _enemies:
   - {fileID: 724093503}
   - {fileID: 1057273797}
-  pointCover: {fileID: 901947648}
 --- !u!1 &5567326753958934115
 GameObject:
   m_ObjectHideFlags: 0

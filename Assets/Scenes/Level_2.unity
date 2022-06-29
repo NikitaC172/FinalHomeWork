@@ -687,7 +687,6 @@ MonoBehaviour:
   _enemies:
   - {fileID: 680975155}
   - {fileID: 193440063}
-  pointCover: {fileID: 1712847426}
 --- !u!65 &165746929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1709,7 +1708,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemies: []
-  pointCover: {fileID: 1858260397}
 --- !u!65 &341161599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2104,6 +2102,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: ad67d56aff5458643b42657ea1833547, type: 3}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _firstWeapon
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: 8759500fbac831d449b4e29421d220e2, type: 3}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: dc56e547143387b4e91644563814d4ef, type: 3}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: ad67d56aff5458643b42657ea1833547, type: 3}
+    - target: {fileID: 7866987995444179472, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+      propertyPath: _weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 2673284558603240182, guid: 8759500fbac831d449b4e29421d220e2, type: 3}
     - target: {fileID: 7866987995444179476, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
       propertyPath: _mover
       value: 
@@ -3095,6 +3125,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc595c87d370a7548931f5b43b07477f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &624717254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3673838332151001425, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+  m_PrefabInstance: {fileID: 425038899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3541219b6a6eedc4f9ac12c14f6ed2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &624717255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7188379951513938119, guid: 153121d994f84004db7cda6339cb6ffc, type: 3}
+  m_PrefabInstance: {fileID: 425038899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2336f2f64669e83488a3482c5174fa50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &626109065
@@ -5429,7 +5481,6 @@ MonoBehaviour:
   _enemies:
   - {fileID: 581661552}
   - {fileID: 743930340}
-  pointCover: {fileID: 1569578816}
 --- !u!65 &1048242641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6100,7 +6151,6 @@ MonoBehaviour:
   - {fileID: 1161248269}
   - {fileID: 1093879829}
   - {fileID: 1316267573}
-  pointCover: {fileID: 1132993503}
 --- !u!65 &1183896670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7116,7 +7166,6 @@ MonoBehaviour:
   - {fileID: 1899262239}
   - {fileID: 502638791}
   - {fileID: 41452286}
-  pointCover: {fileID: 1866707702}
 --- !u!65 &1500918576
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7589,21 +7638,33 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReturnToMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4606013170599027654, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.625183
+      objectReference: {fileID: 0}
     - target: {fileID: 4606013170599027655, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 425038900}
+      objectReference: {fileID: 425038901}
     - target: {fileID: 4606013170599027655, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TakeCover
       objectReference: {fileID: 0}
+    - target: {fileID: 4606013170599027655, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Mover, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4606013170722153562, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 425038900}
+      objectReference: {fileID: 624717255}
     - target: {fileID: 4606013170722153562, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606013170722153562, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChangerWeapon, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4606013170755320937, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -7616,10 +7677,14 @@ PrefabInstance:
     - target: {fileID: 4606013170980954854, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 425038900}
+      objectReference: {fileID: 624717254}
     - target: {fileID: 4606013170980954854, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TryReload
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606013170980954854, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Shooter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4606013171126246128, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_IsActive
@@ -7721,6 +7786,14 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 425038900}
+    - target: {fileID: 4606013171435930466, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: _shooter
+      value: 
+      objectReference: {fileID: 624717254}
+    - target: {fileID: 4606013171435930466, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
+      propertyPath: _changerWeapon
+      value: 
+      objectReference: {fileID: 624717255}
     - target: {fileID: 4606013171584962721, guid: 9985ec879091bfe489192b3c5be46345, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -8659,7 +8732,6 @@ MonoBehaviour:
   - {fileID: 347435910}
   - {fileID: 353688270}
   - {fileID: 1725838391}
-  pointCover: {fileID: 1570151700}
 --- !u!65 &1866263168
 BoxCollider:
   m_ObjectHideFlags: 0

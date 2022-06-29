@@ -8,7 +8,7 @@ public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private string _name = null;
     [SerializeField] private int _reward = 0;
-    [SerializeField] private PlayerStats _playerStats;
+    [SerializeField] private Player _player;
     [SerializeField] private Sprite _label = null;
     [SerializeField] private Text _textName = null;
     [SerializeField] private Text _textReward = null;
@@ -37,7 +37,7 @@ public class LevelLoader : MonoBehaviour
     private void SelectLevel()
     {
         Time.timeScale = 1;
-        _playerStats.SetReward(_reward);
+        _player.SetReward(_reward);
         SceneManager.LoadScene(_name);
     }
 }

@@ -6,13 +6,7 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     [SerializeField] private GameObject _panelLevel = null;
-    [SerializeField] private GameObject _panelShop = null;
-    [SerializeField] private PlayerStats _playerStats = null;
-
-    private void Awake()
-    {
-        _playerStats.GetSaveData();
-    }
+    [SerializeField] private GameObject _panelShop = null;    
 
     public void OpenPanel(GameObject panel)
     {

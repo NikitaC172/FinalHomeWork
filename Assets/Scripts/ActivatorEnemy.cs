@@ -7,8 +7,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(Collider))]
 public class ActivatorEnemy : MonoBehaviour
 {
-    [SerializeField] private List<Enemy> _enemies = null;
-    [SerializeField] private Transform pointCover = null;
+    [SerializeField] private List<Enemy> _enemies = null;    
 
     private Mover _mover;
     private int _secondsToRemove = 10;
@@ -20,8 +19,6 @@ public class ActivatorEnemy : MonoBehaviour
 
         if (collider.TryGetComponent<Player>(out Player player))
         {
-            player.SetOffestCover(pointCover, transform);
-
             if (_enemies.Count != 0)
             {
                 foreach (var enemy in _enemies)

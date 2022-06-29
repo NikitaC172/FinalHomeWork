@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Shooter))]
 [RequireComponent(typeof(AudioSource))]
 public class PlayerSound : MonoBehaviour
 {
@@ -11,78 +12,55 @@ public class PlayerSound : MonoBehaviour
 
     private AudioSource _audioSource = null;
     private Player _player = null;
+    private Shooter _shooter = null;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _player = GetComponent<Player>();
+        _shooter = GetComponent<Shooter>();
     }
 
     private void OnEnable()
     {
         _player.Damaged += Hit;
         _player.Died += Die;
-        _player.StartedReload += Reload;
-        _player.Shooted += Shoot;
-        _player.EmptedAmmo += NeedAmmo;
-    }
-
-    private void Start()
-    {
-        //_player.CurrentWeapon.StartReload += Reload;
-        //_player.CurrentWeapon.Shooted += Shoot;
-        //_player.CurrentWeapon.EmptyAmmo += NeedAmmo;
+        _shooter.StartedReload += Reload;
+        _shooter.Shooted += Shoot;
+        _shooter.EmptedAmmo += NeedAmmo;
     }
 
     private void OnDisable()
     {
         _player.Damaged -= Hit;
         _player.Died -= Die;
-        _player.StartedReload -= Reload;
-        _player.Shooted -= Shoot;
-        //_player.CurrentWeapon.StartReload -= Reload;
-        //_player.CurrentWeapon.Shooted -= Shoot;
-        //_player.CurrentWeapon.EmptyAmmo -= NeedAmmo;
-        _player.EmptedAmmo -= NeedAmmo;
+        _shooter.StartedReload -= Reload;
+        _shooter.Shooted -= Shoot;
+        _shooter.EmptedAmmo -= NeedAmmo;
     }
 
     private void Hit()
     {
-        //if (_hit != null)
-        //{
             _audioSource.PlayOneShot(_hit);
-        //}
     }
 
     private void Die()
     {
-        //if (_die != null)
-        //{
             _audioSource.PlayOneShot(_die);
-        //}
     }
 
-    private void Reload()
+    private void Reload(Weapon weapon)
     {
-        //if (_player.CurrentWeapon.ReloadSound != null)
-        //{
-            _audioSource.PlayOneShot(_player.CurrentWeapon.ReloadSound);
-        //}
+            _audioSource.PlayOneShot(weapon.ReloadSound);
     }
 
-    private void Shoot()
+    private void Shoot(Weapon weapon)
     {
-        //if (_player.CurrentWeapon.ShootSound != null)
-        //{
-            _audioSource.PlayOneShot(_player.CurrentWeapon.ShootSound);
-        //}
+            _audioSource.PlayOneShot(weapon.ShootSound);
     }
 
-    private void NeedAmmo()
+    private void NeedAmmo(Weapon weapon)
     {
-        //if (_player.CurrentWeapon.EmptySound != null)
-        //{
-            _audioSource.PlayOneShot(_player.CurrentWeapon.EmptySound);
-        //}
+            _audioSource.PlayOneShot(weapon.EmptySound);
     }
 }

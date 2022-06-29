@@ -5,16 +5,40 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private int _money = 0;
     [SerializeField] private List<string> _nameWeapons;
+    [SerializeField] private List<Weapon> _weapons;
+    [SerializeField] private Weapon _firstWeapon;
+    [SerializeField] private int _money = 0;
     [SerializeField] private int _reward;
 
+    private Player _player;
     private string _nameSaveFile = "/PlayerStats.dat";
 
     public int Money => _money;
     public List<string> NameWeapons => _nameWeapons;
+
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+        GetSaveData();
+    }
+
+    private void OnEnable()
+    {
+        _player.ChangedReward += SetReward;
+        _player.ChangedMoney += ChangeMoney;
+        _player.BuyedWeapon += AddWeapon;
+    }
+
+    private void OnDisable()
+    {
+        _player.ChangedReward -= SetReward;
+        _player.ChangedMoney -= ChangeMoney;
+        _player.BuyedWeapon -= AddWeapon;
+    }
 
     public void GetSaveData()
     {
@@ -28,31 +52,10 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void TransferData(Player player)
+    public void TransferData()
     {
-        foreach (var weapon in _nameWeapons)
-        {
-            player.GetData(weapon);
-        }
-    }
-
-    public void SetReward(int reward)
-    {
-        _reward = reward;
-        SaveGame();
-    }
-
-    public void GetReward()
-    {
-        _money += _reward;
-        SaveGame();
-    }
-
-    public void BuyWeapon(Weapon weapon)
-    {
-        _money -= weapon.Price;
-        _nameWeapons.Add(weapon.Name);
-        SaveGame();
+        _player.GetData(_money, _reward);
+        TransferWeapon();
     }
 
     public void ResetData()
@@ -63,6 +66,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         _nameWeapons.Clear();
+        _nameWeapons.Add(_firstWeapon.Name);
         _money = 100;
         _reward = 0;
         SaveGame();
@@ -85,6 +89,38 @@ public class PlayerStats : MonoBehaviour
                 _nameWeapons.Add(weapon);
             }
         }
+    }
+
+    private void TransferWeapon()
+    {
+        foreach (var nameWeapon in _nameWeapons)
+        {
+            foreach (var weapon in _weapons)
+            {
+                if (weapon.Name == nameWeapon)
+                {
+                    _player.GetWeapon(weapon);
+                }
+            }
+        }
+    }
+
+    private void SetReward(int reward)
+    {
+        _reward = reward;
+        SaveGame();
+    }
+
+    private void AddWeapon(string nameWeapon)
+    {
+        _nameWeapons.Add(nameWeapon);
+        SaveGame();
+    }
+
+    private void ChangeMoney(int deltaMoney)
+    {
+        _money += deltaMoney;
+        SaveGame();
     }
 
     private void SaveGame()

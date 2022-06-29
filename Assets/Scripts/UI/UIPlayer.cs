@@ -11,37 +11,38 @@ public class UIPlayer : MonoBehaviour
     [SerializeField] private Text _nameWeapon;
     [SerializeField] private Button _moveButton;
     [SerializeField] private Player _player;
+    [SerializeField] private ChangerWeapon _changerWeapon;
+    [SerializeField] private Shooter _shooter;
     [SerializeField] private Mover _mover;
 
     private void OnEnable()
     {
         _player.Damaged += ChangeHealth;
-        _player.ChangedWeapon += ChangeNameWeapon;
-        _player.ChangedWeapon += ChangedAmmo;
-        _mover.MovedNewStage += ShowMoveButton;
-        _player.Reloaded += ChangedAmmo;
-        _player.Shooted += ChangedAmmo;
+        _changerWeapon.ChangedWeapon += ChangeNameWeapon;
+        _changerWeapon.ChangedWeapon += ChangedAmmo;
+        _mover.ShowedButtonNewStage += ShowMoveButton;
+        _shooter.Reloaded += ChangedAmmo;
+        _shooter.Shooted += ChangedAmmo;
     }
 
-    private void ChangeNameWeapon()
+    private void ChangeNameWeapon(Weapon weapon)
     {
-        _nameWeapon.text = _player.CurrentWeapon.Name;
+        _nameWeapon.text = weapon.Name;
     }
 
     private void Start()
     {
         _health.text = _player.CurrentHealth.ToString();
-        _ammo.text = _player.CurrentWeapon.CurrentAmmo.ToString();
     }
 
     private void OnDisable()
     {
-        _mover.MovedNewStage -= ShowMoveButton;
-        _player.ChangedWeapon -= ChangeNameWeapon;
         _player.Damaged -= ChangeHealth;
-        _player.Reloaded -= ChangedAmmo;
-        _player.Shooted -= ChangedAmmo;
-        _player.ChangedWeapon -= ChangedAmmo;
+        _changerWeapon.ChangedWeapon -= ChangeNameWeapon;
+        _changerWeapon.ChangedWeapon -= ChangedAmmo;
+        _mover.ShowedButtonNewStage -= ShowMoveButton;
+        _shooter.Reloaded -= ChangedAmmo;
+        _shooter.Shooted -= ChangedAmmo;
     }
 
     public void HideMoveButton()
@@ -60,8 +61,8 @@ public class UIPlayer : MonoBehaviour
         _health.text = _player.CurrentHealth.ToString();
     }
 
-    private void ChangedAmmo()
+    private void ChangedAmmo(Weapon weapon)
     {
-        _ammo.text = _player.CurrentWeapon.CurrentAmmo.ToString();
+        _ammo.text = weapon.CurrentAmmo.ToString();
     }
 }

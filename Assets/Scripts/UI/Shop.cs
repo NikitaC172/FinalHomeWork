@@ -7,7 +7,7 @@ public class Shop : MonoBehaviour
 {
 
     [SerializeField] private List<Weapon> _weapons;
-    [SerializeField] private PlayerStats _playerStats;
+    [SerializeField] private Player _player;
     [SerializeField] private WeaponUI _template;
     [SerializeField] private GameObject _itemContainer;
     [SerializeField] private Text _money;
@@ -16,9 +16,9 @@ public class Shop : MonoBehaviour
     {
         for (int i = 0; i < _weapons.Count; i++)
         {
-            if (_playerStats.NameWeapons.Contains(_weapons[i].Name))
+            if (_player.Weapons.Contains(_weapons[i]))
             {
-                _weapons[i].Buy();
+                   _weapons[i].Buy();
             }
             else
             {
@@ -28,7 +28,7 @@ public class Shop : MonoBehaviour
             AddItem(_weapons[i]);
         }
 
-        _money.text = _playerStats.Money.ToString();
+        _money.text = _player.Money.ToString();
     }
 
     private void OnDisable()
@@ -53,13 +53,13 @@ public class Shop : MonoBehaviour
 
     private void TrySellWeapon(Weapon weapon, WeaponUI view)
     {
-        Debug.Log(_playerStats.Money);
+        Debug.Log(_player.Money);
 
-        if (weapon.Price <= _playerStats.Money)
+        if (weapon.Price <= _player.Money)
         {
-            _playerStats.BuyWeapon(weapon);
+            _player.BuyWeapon(weapon);
             weapon.Buy();
-            _money.text = _playerStats.Money.ToString();
+            _money.text = _player.Money.ToString();
             view.SellButtonClick -= OnSellButtonClick;
         }
     }

@@ -17,7 +17,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private AudioClip _emptySound = null;
 
     protected int _currentAmmo = 0;
-    protected bool _isReadyShoot = false;
+    protected bool _isReadyShoot = true;
     protected bool _isReloading = false;
 
     public string Name => _name;
