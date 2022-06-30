@@ -27,31 +27,19 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
         Advertisement.Banner.Load(_gameId, options);
     }
 
-    public void OnInitializationComplete()
-    {
-        Debug.Log("Unity Ads initialization complete.");
-    }
+    public void OnInitializationComplete(){}
 
-    public void OnInitializationFailed(UnityAdsInitializationError error, string message)
-    {
-        Debug.Log($"Unity Ads Initialization Failed: {error.ToString()} - {message}");
-    }
+    public void OnInitializationFailed(UnityAdsInitializationError error, string message){}
 
     private void OnDisable()
     {
-        // Hide the banner:
         Advertisement.Banner.Hide();
     }
 
-    private void OnBannerError(string message)
-    {
-        Debug.Log($"Banner Error: {message}");
-        // Optionally execute additional code, such as attempting to load another ad.
-    }
+    private void OnBannerError(string message){}
 
     private void OnBannerLoaded()
     {
-        Debug.Log("Banner loaded");
         Advertisement.Banner.Show(_gameId);
     }
 }
